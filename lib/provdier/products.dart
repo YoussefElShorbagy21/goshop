@@ -9,6 +9,7 @@ class ProviderData extends ChangeNotifier {
 
   List<Product> p = [];
   List<Product>  pId = [] ;
+  List<Product>  fId = [] ;
   List<Category> categories = [] ;
 
   getProducts(context)  async {
@@ -31,5 +32,11 @@ class ProviderData extends ChangeNotifier {
     notifyListeners();
   }
 
+  getProductByIdIsFav(context , id) async {
+    fId = await ApiSev.getDataIsFav(context,id) ;
+    print(id);
+    print('getPostsById in ProviderData');
+    notifyListeners();
+  }
 }
 

@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'package:tasks/Categorys.dart';
 import 'package:tasks/HomeScreen&Drawer/AppIcons.dart';
 import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/Cart.dart';
+import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/WishList.dart';
 import 'package:tasks/HomeScreen&Drawer/Products.dart';
 import '../provdier/products.dart';
 
@@ -64,7 +65,6 @@ class _HomePageState extends State<HomePage> {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const cart(title: '',)));
                       }
                   )
-
                 ],
                 leading : AppIcons(iconSource: "assets/images/menu.svg",
                     press:() {
@@ -222,7 +222,8 @@ class _HomePageState extends State<HomePage> {
                           mainAxisSpacing: 1.0,
                           crossAxisSpacing: 1.0,
                           childAspectRatio: 1 / 1.72 ,
-                          children: List.generate(m.p.length, (index) => buliderGridProduct(
+                          children: List.generate(
+                            m.p.length, (index) => buliderGridProduct(
                             context,
                             m.p[index].image,
                             m.p[index].price,
@@ -240,9 +241,13 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-  Widget bulideCategoriesItem(BuildContext context , String Cate , int i) =>  InkWell(
+
+
+     Widget bulideCategoriesItem(BuildContext context , String Cate , int i) =>  InkWell(
     onTap: (){
-      Navigator.push(context, MaterialPageRoute(builder: (context) =>   Categories(productsId: title[i],)));
+      Navigator.push(context,
+          MaterialPageRoute(builder: (context) =>
+              Categories(productsId: title[i],)));
     },
     child: Stack(
       alignment: AlignmentDirectional.bottomCenter,
@@ -271,7 +276,8 @@ class _HomePageState extends State<HomePage> {
       ],
     ),
   );
-   Widget buliderGridProduct(BuildContext context, String imag , double d , String cm , int id) => InkWell(
+
+     Widget buliderGridProduct(BuildContext context, String imag , double d , String cm , int id) => InkWell(
      onTap: (){
        Navigator.push(context, MaterialPageRoute(builder: (context) =>   ProductScreen(productsId: id,)));
      },

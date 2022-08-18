@@ -41,7 +41,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 SvgPicture.asset(
                   "assets/icons/signup.svg",
-                  height: size.height * 0.27,
+                  height: size.height * 0.2,
                 ),
                 TextFormFieldSignUp(),
                 Row(

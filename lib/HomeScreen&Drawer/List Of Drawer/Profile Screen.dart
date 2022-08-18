@@ -122,7 +122,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ),
             edit('Edit Profile','assets/images/edit.png',Profile()),
             edit('Cart',"assets/images/shopping-bag-1 1.png",cart(title: '',)),
-            edit('Wishlist',"assets/images/loved.png",Wishlist()),
+            edit('Wishlist',"assets/images/loved.png",Wishlist(productsId: 1,)),
             edit('Order History',"assets/images/path-10.png",history(title: '',)),
             edit('Cards',"assets/images/Icon_Credit Card.png",CheckoutScreen()),
           ],

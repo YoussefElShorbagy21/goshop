@@ -6,7 +6,9 @@ import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/Cart.dart';
 import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/OrderHistory.dart';
 import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/Profile%20Screen.dart';
 import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/WishList.dart';
-import 'package:tasks/HomeScreen&Drawer/List%20Of%20Drawer/checkout_screen.dart';
+
+
+import '../Setting Screen/Settings Screen.dart';
 
 
 class ZoomDrawers extends StatefulWidget {
@@ -37,14 +39,15 @@ class _ZoomDrawersState extends State<ZoomDrawers> {
 
   Widget setScreen()
   {
+    int p = 0 ;
     switch(currentIndex)
     {
       case 0 : return  const HomePage();
-      case 1 : return  const Wishlist();
+      case 1 : return   Wishlist(productsId: p);
       case 2 : return  const cart(title: '',);
       case 3 : return  const history(title: '',);
       case 4 : return  const ProfileScreen();
-      case 5 : return  const CheckoutScreen();
+      case 5 : return   const SettingPage();
       default: return  const HomePage();
 
     }

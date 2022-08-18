@@ -16,6 +16,7 @@ class OnBoarding extends StatefulWidget {
   @override
   State<OnBoarding> createState() => _OnBoardingState();
 }
+
 class BoardingModel  {
   final String image ;
   final String txt ;
@@ -40,9 +41,14 @@ class _OnBoardingState extends State<OnBoarding> {
   var boardController = PageController();
   List<BoardingModel> onboardingPagesList =
   [
-    BoardingModel(txt1: 'Skip', txt2: 'Next', txt: 'We Strive to have a positive impact on customers, employees, small businesses, the economy and communities.', image: 'assets/images/Catalogue-amico.svg',color: Colors.orange,color1: Colors.white),
-    BoardingModel(image: 'assets/images/Free shipping-pana.svg',txt: 'We promote the fact that we offer free shipping for all orders.',txt1: 'Back',txt2: 'Next',color: Colors.orange,color1: Colors.white),
-    BoardingModel(image: 'assets/images/Mobile Marketing-pana.svg',txt: 'Be sure to log in to be able to book newly added offers.',txt1: 'Log in',txt2: 'Register',color: Colors.white,color1: Colors.orange),
+    BoardingModel(txt1: 'Skip',
+        txt2: 'Next',
+        txt: 'We Strive to have a positive impact on customers, employees, small businesses, the economy and communities.',
+        image: 'assets/images/Catalogue-amico.svg',color: Colors.orange,color1: Colors.white),
+    BoardingModel(image: 'assets/images/Free shipping-pana.svg',
+        txt: 'We promote the fact that we offer free shipping for all orders.',txt1: 'Back',txt2: 'Next',color: Colors.orange,color1: Colors.white),
+    BoardingModel(image: 'assets/images/Mobile Marketing-pana.svg',
+        txt: 'Be sure to log in to be able to book newly added offers.',txt1: 'Log in',txt2: 'Register',color: Colors.white,color1: Colors.orange),
   ];
   // void initState(){
   //   WidgetsFlutterBinding.ensureInitialized();
@@ -193,6 +199,7 @@ class _OnBoardingState extends State<OnBoarding> {
       ],
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

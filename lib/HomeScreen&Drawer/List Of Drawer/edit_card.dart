@@ -32,7 +32,7 @@ class _EditCardState extends State<EditCard> {
         child: AppBar(
           backgroundColor: Color(0xff432267),
           centerTitle: true,
-          title: Text('Order History',
+          title: Text('Edit Card',
               style: GoogleFonts.josefinSans(
                 textStyle:TextStyle(
                   fontSize: 30,
@@ -109,6 +109,7 @@ class _EditCardState extends State<EditCard> {
                     height: 50,
                     child: OutlinedButton(
                       onPressed: (){
+                        Navigator.pop(context);
                       },
                       autofocus: true,
                       style: OutlinedButton.styleFrom(

@@ -22,6 +22,7 @@ class Profile extends StatefulWidget {
 class _ProfileState extends State<Profile>  {
   User? user = FirebaseAuth.instance.currentUser;
   UserModel data = UserModel();
+
   @override
   void initState() {
     super.initState();
@@ -47,9 +48,9 @@ class _ProfileState extends State<Profile>  {
       if(image == null) return;
 
       final imageTemp = File(image.path);
-
       setState(() {
         this.image = imageTemp ;
+        print(this.image!.path);
       });
     } on PlatformException catch(e)
     {
@@ -58,6 +59,7 @@ class _ProfileState extends State<Profile>  {
       }
     }
   }
+
   Future pickImageC() async
   {
     try{
@@ -155,9 +157,9 @@ class _ProfileState extends State<Profile>  {
             ),
             edit(data.name.toString(), 'assets/images/path-5.png',usernameController,TextInputType.text),
             edit(data.email.toString(), 'assets/images/path-4.png',emailController,TextInputType.emailAddress),
-            edit('Arish - North Sinai', 'assets/images/path-3.png',homeController,TextInputType.streetAddress),
-            edit('Al Sagha Street', 'assets/images/path-2.png',locationController,TextInputType.emailAddress),
-            edit('+201559201810', 'assets/images/path-1.png',phoneController,TextInputType.phone),
+            edit(data.city.toString(), 'assets/images/path-3.png',homeController,TextInputType.streetAddress),
+            edit(data.location.toString(), 'assets/images/path-2.png',locationController,TextInputType.emailAddress),
+            edit(data.phone.toString(), 'assets/images/path-1.png',phoneController,TextInputType.phone),
             const SizedBox(
               height: 20,
             ),
@@ -177,7 +179,13 @@ class _ProfileState extends State<Profile>  {
           child: MaterialButton(
             onPressed: (){
               setState(() {
-                updateProfile(emailController.text,usernameController.text,image.toString());
+                updateProfile(emailController.text,
+                    usernameController.text,
+                    image!.path,
+                    homeController.text,
+                  locationController.text,
+                  phoneController.text
+                );
               });
             },
             child: Text('Save',
@@ -272,12 +280,15 @@ class _ProfileState extends State<Profile>  {
 
   }
 
-  void updateProfile(String email  , String name , String image ) async {
+  void updateProfile(String email  , String name , String image , String c , String l , String p) async {
     FirebaseFirestore.instance.collection('users').doc(user!.uid)
         .update({
       'name' : name,
       'email' : email,
       'image' : image,
+      'city' : c,
+      'location':l,
+      'phone':p,
     }).then((value)
     {
       Fluttertoast.showToast(

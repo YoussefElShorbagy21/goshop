@@ -16,6 +16,11 @@ extension StringExtensions on String {
   bool isWhitespace() => trim().isEmpty;
   bool isValidDouble() => double.tryParse(this) != null;
   bool isValidInt() => int.tryParse(this) != null;
+  bool isValidPassword(){
+    return RegExp(
+        r'^(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}$'
+    ).hasMatch(this);
+  }
 }
 
 class TextFormFieldLogin extends StatefulWidget {
@@ -28,7 +33,6 @@ class TextFormFieldLogin extends StatefulWidget {
   @override
   State<TextFormFieldLogin> createState() =>TextFormFieldLoginState();
 }
-
 class TextFormFieldLoginState extends State<TextFormFieldLogin> {
   bool obscurePassword = true;
   var emailController = TextEditingController();
@@ -88,7 +92,7 @@ class TextFormFieldLoginState extends State<TextFormFieldLogin> {
         TextFieldContainer(
           child: TextFormField(
             validator: (s) {
-              if (s!.isWhitespace()) {
+              if (!s!.isValidPassword()) {
                 return "This is a required field";
               }
             },

@@ -25,7 +25,6 @@ class ApiSev
     return model ;
   }
 
-
   static Future<List<Category>> getDataCategories(String cate) async {
 
     print('getDataCategories');
@@ -33,6 +32,16 @@ class ApiSev
     print(url.toString());
     var respone = await http.get(url);
     List<Category> model = categoryFromJson(respone.body);
+    return model ;
+  }
+
+
+  static Future<List<Product>> getDataIsFav(int id , bool isfav) async {
+    print('getDataById');
+    var url = Uri.parse(ApiConstants.baseUrl+ApiConstants.products + id.toString());
+    print(url.toString());
+    var respone = await http.get(url);
+    List<Product> model = productFromJson(respone.body);
     return model ;
   }
 }
